@@ -28,14 +28,14 @@ M.Slider.init(slider, {
         }
 
         navMenu.innerHTML = `
-          <li><a href="./index.html">Back Home</a></li>
+          <li><a href="../index.html">Back Home</a></li>
           <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius: 25px;"> ${userName}</a></li>
           <li><a href="./history.html" class="btn green darken-2 white-text" id="historybtn">History</a></li>
           <li><a href="#" id="logoutBtn" class="btn red white-text">Logout</a></li>
         `;
 
         mobileMenu.innerHTML = `
-          <li><a href="./index.html">Back Home</a></li>
+          <li><a href="../index.html">Back Home</a></li>
           <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius: 25px;"> ${userName}</a></li>
           <li><a href="./history.html" class="btn green darken-2 white-text" id="historybtn">History</a></li>
           <li><a href="#" id="logoutBtn" class="btn red white-text">Logout</a></li>
