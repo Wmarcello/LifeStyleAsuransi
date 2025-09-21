@@ -442,7 +442,7 @@
           <li><a href="#contact">Contact</a></li>
           <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius: 25px;"> ${userName}</a></li>
           <li><a href="./asuransi/history.html" class="btn green darken-2 white-text" id="historybtn">History</a></li>
-          <li><a href="#" id="logoutBtnDesktop" class="btn red white-text">Logout</a></li>
+          <li><a href="#" class="btn red white-text logoutBtn">Logout</a></li>
         `;
 
         mobileMenu.innerHTML = `
@@ -451,30 +451,20 @@
           <li><a href="#reason">Reason</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius: 25px;"> ${userName}</a></li>
+          <li><a href="#" class="btn red white-text logoutBtn">Logout</a></li>
           <li><a href="./asuransi/history.html" class="btn green darken-2 white-text" id="historybtn">History</a></li>
-          <li><a href="#" id="logoutBtnMobile" class="btn red white-text">Logout</a></li>
         `;
 
-      // Desktop logout
-const logoutDesktop = document.getElementById("logoutBtnDesktop");
-if (logoutDesktop) {
-  logoutDesktop.addEventListener("click", () => {
-    localStorage.clear();
+document.querySelectorAll(".logoutBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("history");
     alert("Anda sudah logout.");
     window.location.href = "./asuransi/login.html";
   });
-}
-
-      // Mobile logout
-const logoutMobile = document.getElementById("logoutBtnMobile");
-if (logoutMobile) {
-  logoutMobile.addEventListener("click", () => {
-    localStorage.clear();
-    alert("Anda sudah logout.");
-    window.location.href = "./asuransi/login.html";
-  });
-}
-    }
+});
+      }
     });
   </script>
 </body>
