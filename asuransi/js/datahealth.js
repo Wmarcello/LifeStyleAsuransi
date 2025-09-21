@@ -31,23 +31,26 @@ M.Slider.init(slider, {
           <li><a href="../index.html">Back Home</a></li>
           <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius: 25px;"> ${userName}</a></li>
           <li><a href="./history.html" class="btn green darken-2 white-text" id="historybtn">History</a></li>
-          <li><a href="#" id="logoutBtn" class="btn red white-text">Logout</a></li>
+          <li><a href="#" class="btn red white-text logoutBtn">Logout</a></li>
         `;
 
         mobileMenu.innerHTML = `
           <li><a href="../index.html">Back Home</a></li>
           <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius: 25px;"> ${userName}</a></li>
           <li><a href="./history.html" class="btn green darken-2 white-text" id="historybtn">History</a></li>
-          <li><a href="#" id="logoutBtn" class="btn red white-text">Logout</a></li>
+          <<li><a href="#" class="btn red white-text logoutBtn">Logout</a></li>
         `;
-
-        // Tombol logout
-        document.getElementById("logoutBtn").addEventListener("click", function() {
-          localStorage.removeItem("isLoggedIn");
-          localStorage.removeItem("userName");
-          alert("Anda sudah logout.");
-          window.location.href = "./login.html";
-        });
+          
+        // tombol logout
+           document.querySelectorAll(".logoutBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("history");
+    alert("Anda sudah logout.");
+    window.location.href = "./asuransi/login.html";
+  });
+});
       });
 
 /* Akhir Cek login status */
