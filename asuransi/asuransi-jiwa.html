@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lifestyle Asuransi</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <!--Import Google Icon Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
+  <!-- icon materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar-fixed">
+    <nav class="white">
+      <div class="nav-wrapper">
+        <div class="container">
+          <img src="../assets/logo.png" alt="Lifestyle Asuransi" class="logo">
+          <a href="#" data-target="mobileMenu" class="sidenav-trigger">
+            <i class="material-icons blue darken-4">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down" id="navMenu">
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="./login.html" class="btn indigo darken-3 white-text waves-effect waves-light">Login</a></li>
+            <li><a href="./signup.html" class="btn indigo darken-3 white-text waves-effect waves-light">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- akhir fixed -->
+
+  <!-- Fixed navbar mobile -->
+  <ul class="sidenav" id="mobileMenu">
+    <li><a href="./index.html"> Back Home</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="./login.html" class="btn indigo darken-3 white-text waves-effect waves-light">Login</a></li>
+    <li><a href="./signup.html" class="btn indigo darken-3 white-text waves-effect waves-light">Sign Up</a></li>
+  </ul>
+  <!-- akhir fixed -->
+
+  <!-- Slider -->
+  <div class="slider">
+    <ul class="slides">
+      <li><img src="../assets/insurancelife/life1.png" alt="Asuransi Jiwa" class="responsive-img"></li>
+      <li><img src="../assets/insurancelife/life5.png" alt="Asuransi Jiwa" class="responsive-img"></li>
+      <li><img src="../assets/insurancelife/life3.png" alt="Asuransi Jiwa" class="responsive-img"></li>
+    </ul>
+  </div>
+
+  <!-- Deskripsi Produk -->
+  <section class="carreason scrollspy" id="carreason" style="background:#1e2a7a; color:white; padding:60px 0;">
+    <div class="container">
+      <div class="row valign-wrapper">
+        <div class="col s12 m5">
+          <img src="../assets/insurancelife/life2.png" class="responsive-img z-depth-3" style="border-radius:12px;">
+        </div>
+        <div class="col s12 m7">
+          <h4 class="white-text" style="font-weight:700; margin-bottom:20px; border-bottom:2px solid #fff; display:inline-block; padding-bottom:8px;">
+            Life Insurance
+          </h4>
+          <p style="line-height:1.8; font-size:16px;">
+            Dengan <strong>LifeStyle Life Insurance</strong>, keluarga Anda terlindungi secara finansial jika terjadi risiko meninggal dunia. 
+            Produk ini memberikan santunan pertanggungan hingga <strong>Rp10 Miliar</strong> dengan premi terjangkau sesuai usia Anda. 
+          </p>
+          <p style="line-height:1.8; font-size:16px;">
+            Kami hadir dengan manfaat perlindungan jangka panjang, premi fleksibel, dan proses klaim yang cepat. 
+            Satu langkah tepat untuk memastikan masa depan keluarga tetap terjaga.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Asuransi Jiwa -->
+  <div class="container" style="margin-top:40px; margin-bottom:60px;">
+    <h4 class="center-align" style="font-weight:bold;">Formulir Asuransi Jiwa</h4>
+    <hr>
+    <div class="card-panel black-text">
+      <form id="formJiwa">
+        <img src="../assets/logo.png" alt="Lifestyle Asuransi" class="responsive-img" width="85" height="85">
+        <div class="input-field">
+          <input type="text" id="nama" required>
+          <label for="nama">Nama Lengkap (KTP)</label>
+        </div>
+
+        <div class="input-field">
+          <input type="date" id="tanggalLahir" required>
+          <label for="tanggalLahir" class="active">Tanggal Lahir</label>
+        </div>
+
+        <div class="input-field">
+          <select id="pertanggungan" required>
+            <option value="" disabled selected>Pilih Besaran Pertanggungan</option>
+            <option value="1000000000">Rp1.000.000.000</option>
+            <option value="2000000000">Rp2.000.000.000</option>
+            <option value="3500000000">Rp3.500.000.000</option>
+            <option value="5000000000">Rp5.000.000.000</option>
+            <option value="10000000000">Rp10.000.000.000</option>
+          </select>
+          <label for="pertanggungan">Besaran Pertanggungan</label>
+        </div>
+
+        <div class="center-align">
+          <button type="submit" class="btn-large indigo waves-effect waves-light">Hitung Premi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Hasil Premi -->
+  
+<!-- Modal -->
+<div id="premiJiwaModal" class="modal">
+  <div class="modal-content">
+    <h3 class="text-center text-bold">Produk Asuransi Jiwa yang Cocok</h3>
+    <h5>Hasil Perhitungan Premi</h5>
+    
+    <!-- Kartu Life Partner 1 -->
+    <div class="card">
+      <div class="card-content grey-text">
+        <img src="../assets/partner/aia.png" alt="AIA" width="120">
+        <p>Asuransi Jiwa AIA</p>
+        <ul>
+          <li>✔ Santunan meninggal dunia hingga Rp10 Miliar</li>
+          <li>✔ Fleksibilitas pilihan jangka waktu perlindungan</li>
+          <li>✔ Proses klaim cepat dan transparan</li>
+        </ul>
+        <p>Premi per Bulan: <span id="premiAIA"></span></p>
+        <button class="btn blue" id="btnAIA">Lihat Semua Perlindungan</button>
+      </div>
+    </div>
+    
+    <!-- Kartu Life Partner 2 -->
+    <div class="card">
+      <div class="card-content grey-text">
+        <img src="../assets/insurancelife/astralife.png" alt="Astra Life" width="120">
+        <p>Asuransi Jiwa Astra Life</p>
+        <ul>
+          <li>✔ Perlindungan jiwa dengan premi terjangkau</li>
+          <li>✔ Manfaat tambahan untuk penyakit kritis</li>
+          <li>✔ Opsi perlindungan keluarga dalam satu polis</li>
+        </ul>
+        <p>Premi per Bulan: <span id="premiAstraLife"></span></p>
+        <button class="btn blue" id="btnAstraLife">Lihat Semua Perlindungan</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Akhir Asuransi Jiwa -->
+
+<section class="benefit scrollspy" id="benefit-life">
+  <div class="container">
+    <div class="row">
+      <h4 class="benefit center-align">Manfaat Asuransi Jiwa</h4>
+      <hr>
+      <h6 class="left-align">
+        Memberikan ketenangan finansial dan perlindungan bagi keluarga tercinta
+      </h6>
+
+      <!-- Santunan Meninggal Dunia -->
+      <div class="col m4 s12 center grey-text">
+        <div class="card-panel center">
+          <img src="../assets/insurancelife/cross.png" alt="Santunan Meninggal" class="responsive-img">
+          <h5>Santunan Meninggal Dunia</h5>
+          <p>Ahli waris menerima santunan finansial untuk menjaga stabilitas ekonomi keluarga.</p>
+        </div>
+      </div>
+
+      <!-- Perlindungan Kecelakaan -->
+      <div class="col m4 s12 center grey-text">
+        <div class="card-panel center">
+          <img src="../assets/insurancelife/patient.png" alt="Perlindungan Kecelakaan" class="responsive-img">
+          <h5>Perlindungan Kecelakaan</h5>
+          <p>Menanggung risiko meninggal atau cacat tetap akibat kecelakaan.</p>
+        </div>
+      </div>
+
+      <!-- Investasi / Tabungan -->
+      <div class="col m4 s12 center grey-text">
+        <div class="card-panel center">
+          <img src="../assets/insurancelife/save.png" alt="Investasi & Tabungan" class="responsive-img">
+          <h5>Investasi & Tabungan</h5>
+          <p>Fasilitas tabungan atau investasi jangka panjang sebagai warisan keluarga.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- akhir Manfaat -->
+
+<!-- Section Asuransi Jiwa -->
+<section class="blue darken-4 white-text center" style="padding: 50px 20px;">
+  <div class="container">
+    <img src="../assets/logo.png" alt="Logo" style="width:80px; border-radius:12px; margin-bottom:20px; background-color: white">
+    <h5 class="white-text">Butuh Perlindungan Jiwa?</h5>
+    <p>Kami siap memberikan ketenangan finansial bagi keluarga Anda.</p>
+    <a href="https://wa.me/6285775230813" target="_blank" 
+       class="btn-large green accent-4" 
+       style="border-radius:10px; margin:20px 0;">
+      <i class="material-icons left">phone</i> Konsultasi Asuransi Jiwa
+    </a>
+  </div>
+</section>
+
+<!-- Fitur Asuransi Jiwa -->
+<div class="blue darken-4 white-text" style="padding:30px 20px;">
+  <div class="row center">
+    <div class="col s12 m4">
+      <h6>💰 Santunan Meninggal Dunia</h6>
+      <p>Memberikan santunan kepada ahli waris untuk menjaga stabilitas finansial.</p>
+    </div>
+    <div class="col s12 m4">
+      <h6>🛡️ Perlindungan Kecelakaan</h6>
+      <p>Perlindungan jiwa dari risiko kecelakaan & cacat tetap.</p>
+    </div>
+    <div class="col s12 m4">
+      <h6>📈 Tabungan & Investasi</h6>
+      <p>Manfaat jangka panjang untuk masa depan dan warisan keluarga.</p>
+    </div>
+  </div>
+</div>
+
+<!-- akhir Asuransi Jiwa -->
+
+  <!-- Footer -->
+  <footer class="page-footer white">
+    <div class="container black-text">
+      <div class="row">
+        <div class="col s12 m4">
+          <img src="../assets/logo.png" alt="LifeStyle Asuransi" style="width:120px; margin-bottom:15px;">
+          <h6 class="black-text">PT. LifeStyle Asuransi</h6>
+          <p class="black-text">Perlindungan lengkap untuk Mobil, Jiwa, dan Kesehatan.</p>
+        </div>
+        <div class="col s12 m4">
+          <h6 class="black-text">Contact Us</h6>
+          <ul>
+            <li><i class="material-icons tiny">place</i> JL. Duri Raya No. 72L, Jakarta Barat</li>
+            <li><i class="material-icons tiny">call</i> (021) 1234 5678</li>
+            <li><i class="material-icons tiny">email</i> support@lifestyleasuransi.com</li>
+          </ul>
+        </div>
+        <div class="col s12 m4 center-align">
+          <h6 class="black-text">Partner Kami</h6>
+          <div class="row">
+            <div class="col s4"><img src="../assets/partner/allianz.png" style="max-width:80px;"></div>
+            <div class="col s4"><img src="../assets/partner/prudential.png" style="max-width:80px;"></div>
+            <div class="col s4"><img src="../assets/partner/aia.png" style="max-width:80px;"></div>
+            <div class="col s4"><img src="../assets/partner/astra.png" style="max-width:80px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright indigo darken-4">
+      <div class="container center-align">© 2025 PT. LifeStyle Asuransi</div>
+    </div>
+  </footer>
+
+    <script src="js/materialize.min.js"></script>
+    <script src="js/datajiwa.js" defer></script>
+
+    </body>
+    </html>

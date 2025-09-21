@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lifestyle Asuransi - Checkout</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar-fixed">
+    <nav class="white">
+      <div class="nav-wrapper container">
+        <img src="../assets/logo.png" alt="Lifestyle Asuransi" class="logo">
+        <ul class="right hide-on-med-and-down" id="navMenu">
+          <li><a href="./index.html">Back Home</a></li>
+          <li><a href="./history.html">History</a></li>
+          <li><a href="./login.html" class="btn indigo darken-3 white-text">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h4>Detail Checkout</h4>
+
+    <div class="row">
+      <!-- Informasi Asuransi -->
+      <div class="col s12 m6">
+        <div class="card-panel grey lighten-4 black-text">
+          <h5>Asuransi Dipilih</h5>
+          <img src="" alt="Logo Asuransi" id="insuranceLogo" width="100">
+          <p><b>Asuransi:</b> <span id="insuranceName"></span></p>
+          <p><b>Total Premi:</b> Rp <span id="insurancePremi"></span></p>
+          <h6>Kelebihan Asuransi:</h6>
+          <ul class="collection" id="insuranceBenefits"></ul>
+        </div>
+      </div>
+
+      <!-- Data Mobil -->
+      <div class="col s12 m6" id="dataMobilCard">
+        <div class="card-panel grey lighten-4 black-text">
+          <h5>Data Mobil</h5>
+          <p><b>Nama:</b> <span id="pemilik"></span></p>
+          <p><b>Merek:</b> <span id="merek"></span></p>
+          <p><b>Varian:</b> <span id="varian"></span></p>
+          <p><b>Plat:</b> <span id="plat"></span></p>
+          <p><b>Tahun:</b> <span id="tahun"></span></p>
+          <p><b>Harga Mobil:</b> Rp <span id="harga"></span></p>
+        </div>
+      </div>
+
+      <!-- Data Kesehatan -->
+      <div class="col s12 m6" id="dataKesehatanCard">
+        <div class="card-panel grey lighten-4 black-text">
+          <h5>Data Kesehatan</h5>
+          <p><b>Nama:</b> <span id="pemilikkesehatan"></span></p>
+          <p><b>Tanggal Lahir:</b> <span id="tglLahirKesehatan"></span></p>
+          <p><b>Pekerjaan:</b> <span id="pekerjaan"></span></p>
+          <p><b>Merokok:</b> <span id="merokok"></span></p>
+          <p><b>Hipertensi:</b> <span id="hipertensi"></span></p>
+          <p><b>Diabetes:</b> <span id="diabetes"></span></p>
+        </div>
+      </div>
+
+      <!-- Data Jiwa -->
+      <div class="col s12 m6" id="dataJiwaCard">
+        <div class="card-panel grey lighten-4 black-text">
+          <h5>Data Asuransi Jiwa</h5>
+          <p><b>Nama:</b> <span id="pemilikJiwa"></span></p>
+          <p><b>Tanggal Lahir:</b> <span id="tglLahirJiwa"></span></p>
+          <p><b>Pertanggungan:</b> Rp <span id="pertanggungan"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-align" style="margin-top:20px;">
+      <button id="btnCheckout" class="btn orange darken-2 waves-effect">Simpan Checkout</button>
+      <button id="btnBayar" class="btn green darken-2 waves-effect">Bayar Sekarang</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+<footer class="page-footer white">
+  <div class="container black-text">
+    <div class="row">
+
+      <!-- Logo & Perusahaan -->
+      <div class="col s12 m4">
+        <img src="../assets/logo.png" alt="LifeStyle Asuransi" style="width:120px; margin-bottom:15px;">
+        <h6 class="black-text">PT. LifeStyle Asuransi</h6>
+        <p class="black-text text-lighten-4">Perlindungan lengkap untuk Mobil, Jiwa, dan Kesehatan.</p>
+      </div>
+
+      <!-- Kontak -->
+      <div class="col s12 m4">
+        <h6 class="black-text">Contact Us</h6>
+        <ul class="black-text text-lighten-3">
+          <li><i class="material-icons tiny">place</i> JL. Duri Raya No. 72L, Jakarta Barat</li>
+          <li><i class="material-icons tiny">call</i> (021) 1234 5678</li>
+          <li><i class="material-icons tiny">email</i> support@lifestyleasuransi.com</li>
+        </ul>
+      </div>
+
+      <!-- Partner Brand -->
+      <div class="col s12 m4 center-align">
+        <h6 class="black-text">Partner Kami</h6>
+        <div class="row" style="margin-top:10px;">
+          <div class="col s4">
+            <img src="../assets/partner/allianz.png" alt="Allianz" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/prudential.png" alt="Prudential" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/aia.png" alt="AIA" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/insurancelife/astralife.png" alt="Astra" style="max-width:80px;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright indigo darken-4">
+    <div class="container center-align">
+      © 2025 PT. LifeStyle Asuransi
+    </div>
+  </div>
+</footer>
+
+  <!-- JavaScript -->
+
+  <script src="./js/materialize.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const data = JSON.parse(localStorage.getItem("checkoutData"));
+    const selectedInsurance = JSON.parse(localStorage.getItem("selectedInsurance"));
+
+    if (!data || !selectedInsurance) {
+      alert("Data checkout tidak ditemukan!");
+      window.location.href = "index.html";
+      return;
+    }
+
+    const kategori = data.kategori;
+
+    // Default: sembunyikan semua card
+    document.getElementById("dataMobilCard").style.display = "none";
+    document.getElementById("dataKesehatanCard").style.display = "none";
+    document.getElementById("dataJiwaCard").style.display = "none";
+
+    // Tampilkan sesuai kategori
+    if (kategori === "Mobil") {
+      document.getElementById("dataMobilCard").style.display = "block";
+      document.getElementById("pemilik").textContent = data.pemilik;
+      document.getElementById("merek").textContent = data.merek;
+      document.getElementById("varian").textContent = data.varian;
+      document.getElementById("plat").textContent = data.plat;
+      document.getElementById("tahun").textContent = data.tahun;
+      document.getElementById("harga").textContent = data.harga.toLocaleString('id-ID');
+    } 
+    else if (kategori === "Kesehatan") {
+      document.getElementById("dataKesehatanCard").style.display = "block";
+      document.getElementById("pemilikkesehatan").textContent = data.pemilik;
+      document.getElementById("tglLahirKesehatan").textContent = data.tanggalLahir;
+      document.getElementById("pekerjaan").textContent = data.pekerjaan;
+      document.getElementById("merokok").textContent = data.merokok;
+      document.getElementById("hipertensi").textContent = data.hipertensi;
+      document.getElementById("diabetes").textContent = data.diabetes;
+    } 
+    else if (kategori === "Jiwa") {
+      document.getElementById("dataJiwaCard").style.display = "block";
+      document.getElementById("pemilikJiwa").textContent = data.pemilik;
+      document.getElementById("tglLahirJiwa").textContent = data.tanggalLahir;
+      document.getElementById("pertanggungan").textContent = data.pertanggungan.toLocaleString('id-ID');
+    }
+
+    // Data asuransi
+    document.getElementById("insuranceName").textContent = selectedInsurance.name;
+    document.getElementById("insurancePremi").textContent = selectedInsurance.premi.toLocaleString('id-ID');
+
+    // Logo asuransi
+    const insuranceLogos = {
+      "Zurich": "../assets/partner/zurich.png",
+      "SealInsure": "../assets/partner/seainsure.png",
+      "Allianz": "../assets/partner/allianz.png",
+      "Prudential": "../assets/partner/prudential.png",
+      "AIA": "../assets/partner/aia.png",
+      "Astra": "../assets/insurancelife/astralife.png"
+    };
+    document.getElementById("insuranceLogo").src = insuranceLogos[selectedInsurance.name] || "../assets/logo/default.png";
+
+    // Kelebihan asuransi
+    const benefitsList = {
+      "Zurich": [
+        "Jaringan bengkel luas di seluruh Indonesia",
+        "Proses klaim cepat dan mudah",
+        "Perlindungan menyeluruh (all risk & TLO)"
+      ],
+      "SealInsure": [
+        "Gratis perlindungan pencurian oleh sopir pribadi",
+        "Ganti rugi penuh jika mobil baru hilang total"
+      ],
+      "Allianz": [
+        "Rawat inap hingga Rp 1 Miliar",
+        "Jaringan rumah sakit internasional",
+        "Cakupan COVID-19 dan penyakit kritis"
+      ],
+      "Prudential": [
+        "Santunan meninggal dunia Rp 500 juta",
+        "Manfaat investasi jangka panjang",
+        "Premi fleksibel mulai Rp 100 ribu"
+      ],
+      "AIA": [
+        "Santunan meninggal dunia hingga Rp10 Miliar",
+        "Fleksibilitas pilihan jangka waktu perlindungan",
+        "Proses klaim cepat dan transparan"
+      ],
+      "AstraLife": [
+        "Perlindungan jiwa dengan premi terjangkau",
+        "Manfaat tambahan untuk penyakit kritis",
+        "Opsi perlindungan keluarga dalam satu polis"
+      ]
+    };
+    const ul = document.getElementById("insuranceBenefits");
+    ul.innerHTML = "";
+    if (benefitsList[selectedInsurance.name]) {
+      benefitsList[selectedInsurance.name].forEach(b => {
+        const li = document.createElement("li");
+        li.className = "collection-item";
+        li.innerHTML = `<i class="material-icons left green-text">check_circle</i> ${b}`;
+        ul.appendChild(li);
+      });
+    }
+
+    // === Fungsi simpan ke history ===
+    function simpanHistory(status) {
+      let history = JSON.parse(localStorage.getItem("polisHistory")) || [];
+      history.push({
+        id: Date.now(),
+        tanggal: new Date().toLocaleString("id-ID"),
+        pemilik: data.pemilik || data.nama,
+        jenis: data.jenis || "-",
+        type: kategori,
+        produk: selectedInsurance.name,
+        premi: selectedInsurance.premi,
+        status
+      });
+      localStorage.setItem("polisHistory", JSON.stringify(history));
+      window.location.href = "history.html";
+    }
+
+    // Tombol event
+    document.getElementById("btnCheckout").onclick = () => simpanHistory("Belum Bayar");
+    document.getElementById("btnBayar").onclick = () => {
+      let bayarData = {
+        ...data,
+        id: Date.now(),
+        tanggal: new Date().toLocaleString("id-ID"),
+        kategori,
+        produk: selectedInsurance.name,
+        premi: selectedInsurance.premi,
+        status: "Belum Bayar"
+      };
+      localStorage.setItem("bayarData", JSON.stringify(bayarData));
+      window.location.href = "pembayaran.html";
+    };
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lifestyle Asuransi</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <!--Import Google Icon Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
+    <!-- icon materialize -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Navbar -->
+     <div class="navbar-fixed">
+    <nav class="white">
+      <div class="nav-wrapper">
+        <div class="container">
+        <img src="../assets/logo.png" alt="Lifestyle Asuransi" class="logo">
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons blue darken-4">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="./index.html"> Home</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+          <li>
+            <a href="./login.html" class="btn btn-signup indigo darken-3 white-text waves-effect waves-light">Login</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    </nav>
+  </div>
+    <!-- akhir fixed -->
+         <!-- Fixed navbar -->
+    <ul class="sidenav" id="mobile-nav">
+      <li><a href="./index.html"> Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="./login.html" class="btn btn-signup indigo darken-3 white-text waves-effect waves-light">Login</a>
+          </li>
+    </ul>
+    <!-- akhir fixed -->
+
+  <main class="auth-wrapper">
+    <section class="auth-card" aria-labelledby="signupTitle">
+      <div class="container grey-text">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card z-depth-4">
+          <div class="card-content">
+            <h2 id="signupTitle" class="auth-title">Buat Akun</h2>
+      <p class="auth-subtitle">Daftar untuk mulai menjelajah produk asuransi.</p>
+            <form id="signupForm">
+              <div class="input-field">
+                <i class="material-icons prefix">person</i>
+                <input type="text" id="signupName" required>
+                <label for="signupName">Nama Lengkap</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">email</i>
+                <input type="email" id="signupEmail" required>
+                <label for="signupEmail">Email</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input type="password" id="signupPassword" required minlength="6">
+                <label for="signupPassword">Password</label>
+              </div>
+              <div class="center">
+                <button class="btn indigo darken-3 waves-effect waves-light" type="submit">Daftar</button>
+              </div>
+            </form>
+          </div>
+          <div class="card-action center">
+            <span class="grey-text">Sudah punya akun?</span>
+            <a href="./login.html" class="indigo-text">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  </main>
+
+  <!-- Footer -->
+<footer class="page-footer white">
+  <div class="container black-text">
+    <div class="row">
+
+      <!-- Logo & Perusahaan -->
+      <div class="col s12 m4">
+        <img src="../assets/logo.png" alt="LifeStyle Asuransi" style="width:120px; margin-bottom:15px;">
+        <h6 class="black-text">PT. LifeStyle Asuransi</h6>
+        <p class="black-text text-lighten-4">Perlindungan lengkap untuk Mobil, Jiwa, dan Kesehatan.</p>
+      </div>
+
+      <!-- Kontak -->
+      <div class="col s12 m4">
+        <h6 class="black-text">Contact Us</h6>
+        <ul class="black-text text-lighten-3">
+          <li><i class="material-icons tiny">place</i> JL. Duri Raya No. 72L, Jakarta Barat</li>
+          <li><i class="material-icons tiny">call</i> (021) 1234 5678</li>
+          <li><i class="material-icons tiny">email</i> support@lifestyleasuransi.com</li>
+        </ul>
+      </div>
+
+      <!-- Partner Brand -->
+      <div class="col s12 m4 center-align">
+        <h6 class="black-text">Partner Kami</h6>
+        <div class="row" style="margin-top:10px;">
+          <div class="col s4">
+            <img src="../assets/partner/allianz.png" alt="Allianz" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/prudential.png" alt="Prudential" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/aia.png" alt="AIA" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/astra.png" alt="Astra" style="max-width:80px;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright indigo darken-4">
+    <div class="container center-align">
+      © 2025 PT. LifeStyle Asuransi
+    </div>
+  </div>
+</footer>
+
+    <script src="./js/web.js" defer></script>
+  <script type="text/javascript" src="./js/materialize.min.js"></script>
+
+<script>
+  document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("signupName").value;
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // cek kalau email sudah ada
+    const existingUser = users.find(u => u.email === email);
+    if (existingUser) {
+      alert("Email sudah terdaftar! Silakan login.");
+      window.location.href = "./login.html"; // langsung arahkan ke login
+      return;
+    }
+
+    // simpan user baru
+    users.push({ name, email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Pendaftaran berhasil! Silakan login.");
+    window.location.href = "./login.html"; // redirect ke login.html
+  });
+</script>
+</body>
+</html>
+
+

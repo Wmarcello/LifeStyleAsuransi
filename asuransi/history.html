@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lifestyle Asuransi - History</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link type="text/css" rel="stylesheet" href="./css/materialize.min.css" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar-fixed">
+    <nav class="white">
+      <div class="nav-wrapper">
+        <div class="container">
+          <img src="../assets/logo.png" alt="Lifestyle Asuransi" class="logo">
+          <a href="#" data-target="mobileMenu" class="sidenav-trigger">
+            <i class="material-icons blue darken-4">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down" id="navMenu">
+            <li><a href="./asuransi-mobil.html"> Back Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="./login.html" class="btn indigo darken-3 white-text waves-effect waves-light">Login</a></li>
+            <li><a href="./signup.html" class="btn indigo darken-3 white-text waves-effect waves-light">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- akhir fixed -->
+
+  <!-- Fixed navbar mobile -->
+  <ul class="sidenav" id="mobileMenu">
+    <li><a href="./asuransi-mobil.html"> Back Home</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="./login.html" class="btn indigo darken-3 white-text waves-effect waves-light">Login</a></li>
+    <li><a href="./signup.html" class="btn indigo darken-3 white-text waves-effect waves-light">Sign Up</a></li>
+  </ul>
+  <!-- akhir fixed -->
+
+  <!-- Container untuk Riwayat Polis -->
+  <div class="container" style="margin-top:30px;">
+    <h4 class="center-align">Riwayat Polis</h4>
+    <div class="card">
+      <div class="card-content black-text">
+        <table class="striped responsive-table">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Pemilik</th>
+              <th>Jenis</th>
+              <th>Type</th>
+              <th>Produk</th>
+              <th>Premi</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="historyTable"></tbody>
+        </table>
+
+        <div class="center-align" style="margin-top:20px;">
+          <button id="btnBayarSemua" class="btn green darken-2">Bayar Semua</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/materialize.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var elems = document.querySelectorAll(".sidenav");
+    M.Sidenav.init(elems);
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userName = localStorage.getItem("userName");
+    const navMenu = document.getElementById("navMenu");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (isLoggedIn !== "true" || !userName) {
+      alert("Silakan login terlebih dahulu untuk mengakses halaman ini.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    navMenu.innerHTML = `
+      <li><a href="./index.html">Back Home</a></li>
+      <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius:25px;">${userName}</a></li>
+      <li><a href="#" id="logoutBtn" class="btn red white-text">Logout</a></li>
+    `;
+    mobileMenu.innerHTML = `
+      <li><a href="./index.html">Back Home</a></li>
+      <li><a href="#" class="btn indigo darken-3 white-text waves-effect waves-light" style="border-radius:25px;">${userName}</a></li>
+      <li><a href="#" id="logoutBtn" class="btn red white-text">Logout</a></li>
+    `;
+
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("userName");
+      alert("Anda sudah logout.");
+      window.location.href = "./login.html";
+    });
+
+    // ================== HISTORY ==================
+    function loadHistory() {
+      const history = JSON.parse(localStorage.getItem("polisHistory")) || [];
+      const tbody = document.getElementById("historyTable");
+      tbody.innerHTML = "";
+
+      if (history.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="center-align">Belum ada histori pembelian.</td></tr>`;
+        return;
+      }
+
+      history.forEach((p) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${p.tanggal || "-"}</td>
+          <td>${p.pemilik || "-"}</td>
+          <td>${p.jenis || "-"}</td>
+          <td>${p.type || "-"}</td>
+          <td>${p.produk || "-"}</td>
+          <td>Rp ${Number(p.premi).toLocaleString("id-ID")}</td>
+          <td>${p.status || "-"}</td>
+          <td>
+            ${p.status === "Belum Bayar" 
+              ? `<button class="btn-small green" onclick="bayarPolis(${p.id})">Bayar</button>
+                 <button class="btn-small red" onclick="cancelPolis(${p.id})">Cancel</button>`
+              : `<button class="btn-small grey disabled">Lunas</button>
+                 <button class="btn-small red" onclick="hapusPolis(${p.id})">Hapus</button>`}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Bayar 1 polis
+    window.bayarPolis = function(id) {
+      const history = JSON.parse(localStorage.getItem("polisHistory")) || [];
+      const polis = history.find(p => p.id === id);
+      if (polis) {
+        localStorage.setItem("bayarData", JSON.stringify(polis));
+        window.location.href = "pembayaran.html";
+      }
+    };
+
+    // Cancel polis
+    window.cancelPolis = function(id) {
+      let history = JSON.parse(localStorage.getItem("polisHistory")) || [];
+      history = history.filter(p => p.id !== id);
+      localStorage.setItem("polisHistory", JSON.stringify(history));
+      loadHistory();
+      M.toast({html: "Polis dibatalkan.", classes: "orange"});
+    };
+
+    // Hapus polis (khusus sudah lunas)
+    window.hapusPolis = function(id) {
+      if (confirm("Apakah Anda yakin ingin menghapus riwayat polis ini?")) {
+        let history = JSON.parse(localStorage.getItem("polisHistory")) || [];
+        history = history.filter(p => p.id !== id);
+        localStorage.setItem("polisHistory", JSON.stringify(history));
+        loadHistory();
+        M.toast({html: "Riwayat polis berhasil dihapus.", classes: "green"});
+      }
+    };
+
+    // Bayar semua
+    document.getElementById("btnBayarSemua").addEventListener("click", function() {
+      let history = JSON.parse(localStorage.getItem("polisHistory")) || [];
+      const belumBayar = history.filter(item => item.status === "Belum Bayar");
+
+      if (belumBayar.length === 0) {
+        M.toast({html: "Tidak ada polis yang perlu dibayar.", classes: "orange"});
+        return;
+      }
+
+      // simpan semua data yang belum bayar untuk diproses di pembayaran.html
+      localStorage.setItem("bayarData", JSON.stringify(belumBayar));
+      window.location.href = "pembayaran.html";
+    });
+
+    loadHistory();
+  });
+</script>
+
+
+</body>
+</html>

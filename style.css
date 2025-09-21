@@ -1,0 +1,416 @@
+:root {
+  --bg: #0f172a;
+  --surface: #111827;
+  --muted: #94a3b8;
+  --text: #e5e7eb;
+  --primary: #2563eb;
+  --primary-600: #1d4ed8;
+  --ring: rgba(37, 99, 235, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: #283593;
+}
+
+nav .btn {
+  padding: 0 12px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+}
+
+.navbar-fixed ul li a {
+  color: black;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+/* login sign up  */
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn:hover {
+  color: black;
+  background-color: #fff;
+}
+
+.btn-login:hover {
+  color: black;
+  background-color: #fff;
+}
+
+.btn-signup:hover {
+  color: black;
+  background-color: #fff;
+}
+
+/* images */
+.slider ul li h4 {
+  color: black;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  margin-top: -10px;
+  font-style: italic;
+}
+
+.slider ul li .life {
+  margin-top: 90px;
+}
+
+/* akhir images */
+
+/* about section */
+.aboutus {
+  margin-top: 10rem;
+  text-align: center;
+}
+hr {
+  width: 300px;
+  margin-bottom: 30px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* lifestyle insurance page */
+.lifestyle {
+  color: black;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+.space {
+  width: 350px;
+  margin-bottom: 30px;
+}
+
+.insurance .card-content h5 {
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+.field {
+  margin-bottom: 14px;
+}
+.label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.input {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+.error {
+  color: #fca5a5;
+  font-size: 13px;
+  min-height: 16px;
+  margin-top: 6px;
+}
+.notice {
+  color: #86efac;
+  font-size: 13px;
+  min-height: 16px;
+  margin-bottom: 10px;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+.muted-link {
+  color: var(--muted);
+  text-decoration: none;
+}
+.muted-link:hover {
+  color: var(--text);
+}
+
+.logo {
+  height: 65px;
+  width: auto;
+  margin-right: 12px;
+}
+
+/* signup.html */
+#signuplink {
+  margin: auto;
+  text-align: center;
+}
+
+/* Partners */
+.clients img {
+  max-width: 160px;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
+}
+
+.card-image {
+  height: 250px;
+}
+
+.card-image .card-content .health {
+  height: 250px;
+}
+
+.logo img {
+  max-height: 100px;
+  width: auto;
+}
+
+/* akhir partners */
+
+/* reason to choose us */
+.reason {
+  padding: 15px;
+}
+.space1 {
+  width: 300px;
+  margin-left: 0;
+  margin-top: -20px;
+  border-bottom: 3px solid white;
+}
+/* Akhir Reason to Choose Us */
+
+/*Trusted By & Parallax  */
+.parallax-container {
+  max-height: 250px;
+  width: 100%;
+  object-fit: contain;
+}
+.slider h4,
+h6,
+.clients h4 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+/* Akhir Trusted By & Parallax */
+
+/* Insurance Section Lifestyle */
+.insurance-section h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  color: gray;
+  font-style: italic;
+}
+
+/* Akhir Insurance Section */
+
+/* Contact us */
+.contact .contactus {
+  margin-top: 45px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  color: black;
+}
+/* Akhir Contact Us */
+
+/* asuransi mobil */
+/* Halaman Asuransi Mobil */
+.accident {
+  font-weight: bold;
+  padding: 5px;
+  font-family: "Inter", sans-serif;
+  background-color: #283593;
+  border-radius: 25px;
+  color: white;
+}
+
+.preview-box img {
+  margin-top: 8px;
+  max-width: 100px;
+  max-height: 80px;
+  display: block;
+}
+.cancel-btn {
+  margin-top: 5px;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+/* TESTIMONI */
+.testimoni {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.testimoni h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.testimoni-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.testimoni-container p {
+  color: black;
+}
+
+.card-index {
+  background: #f2f2f2;
+  padding: 20px;
+  border-radius: 25px;
+  max-width: 350px;
+  text-align: left;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.card-index .quote {
+  color: #007bff;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+/* akhir Halaman Asuransi Mobil */
+
+/* pembayaran asuransi mobil */
+
+.pembayaran-container {
+  margin-top: 40px;
+  max-width: 700px;
+}
+
+.card-pay {
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.btn {
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.payment-method:hover {
+  border-color: #3949ab;
+  background: #f0f4ff;
+}
+
+.payment-method i {
+  margin-right: 10px;
+  color: #3949ab;
+}
+
+/* akhir pembayaran asuransi mobil */
+
+/* all form */
+.card-panel form .btn-large {
+  border-radius: 25px;
+  box-shadow: 2px 2px 1px gray;
+}
+/* akhir all form */
+
+/* asuransi kesehatan */
+
+.benefit-list li,
+.exclude-list li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.text-bold {
+  font-weight: 700;
+}
+
+.benefit-section .card {
+  border-radius: 50px;
+}
+
+.space2 {
+  width: 500px;
+  margin-left: 0;
+  border-bottom: 3px solid white;
+}
+
+/* akhir asuransi kesehatan */
+
+footer {
+  color: black;
+  margin-top: 90px;
+}
+
+/* Device */
+/* MEDIA HANDPHONE */
+@media (max-width: 768px) {
+  .row.image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .parallax-container {
+    max-height: 350px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  /* Asuransi-mobil.html row */
+  .carreason h4 {
+    font-size: 20px;
+    text-align: center;
+  }
+  .carreason p {
+    font-size: 14px;
+    text-align: justify;
+  }
+
+  .carreason .row {
+    flex-direction: column; /* urutkan vertikal */
+  }
+  .carreason .col {
+    width: 100%; /* full width */
+  }
+
+  /* akhir asuransi-mobil.html */
+}
+
+/* Akhir Media Handphone */

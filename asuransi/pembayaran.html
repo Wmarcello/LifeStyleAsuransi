@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pembayaran Polis</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/materialize.min.css" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- jsPDF untuk export PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="blue darken-4 white-text">
+
+  <div class="container">
+    <h4 class="center-align">Pembayaran Polis</h4>
+
+    <!-- Detail Polis -->
+    <div class="card white black-text">
+      <div class="card-content">
+        <span class="card-title">Detail Polis</span>
+        <p><b>Jenis Polis:</b> <span id="jenisPolis">-</span></p>
+        <p><b>Produk:</b> <span id="produk">-</span></p>
+        <p><b>Pemilik/Tertanggung:</b> <span id="pemilik">-</span></p>
+        <p><b>Tanggal:</b> <span id="tanggal">-</span></p>
+        <p><b>Total Tagihan:</b> Rp <span id="premi">0</span></p>
+
+        <!-- Tabel untuk multiple polis -->
+        <div id="tabelPolisContainer" style="margin-top:15px; display:none;">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Pemilik</th>
+                <th>Jenis Polis</th>
+                <th>Produk</th>
+                <th>Tanggal</th>
+                <th>Premi</th>
+              </tr>
+            </thead>
+            <tbody id="tabelPolis"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metode Pembayaran -->
+    <div class="card white black-text">
+      <div class="card-content">
+        <span class="card-title">Pilih Metode Pembayaran</span>
+
+        <!-- Transfer Bank -->
+        <p>
+          <label>
+            <input name="metode" type="radio" value="bank" checked />
+            <span>Transfer Bank (BCA, BNI, BRI)</span>
+          </label>
+        </p>
+        <div id="bankSection" class="input-field">
+          <select id="bankSelect">
+            <option value="BCA" selected>BCA</option>
+            <option value="BNI">BNI</option>
+            <option value="BRI">BRI</option>
+          </select>
+          <label>Pilih Bank:</label>
+          <p><b>Virtual Account:</b> <span id="vaBank"></span></p>
+        </div>
+
+        <!-- E-Wallet -->
+        <p>
+          <label>
+            <input name="metode" type="radio" value="ewallet" />
+            <span>E-Wallet</span>
+          </label>
+        </p>
+        <div id="ewalletSection" class="input-field" style="display:none;">
+          <select id="ewalletSelect">
+            <option value="OVO">OVO</option>
+            <option value="GoPay">GoPay</option>
+            <option value="Dana">Dana</option>
+          </select>
+          <label>Pilih E-Wallet:</label>
+          <p><b>Virtual Account:</b> <span id="vaEwallet"></span></p>
+        </div>
+
+        <!-- Kartu Kredit -->
+        <p>
+          <label>
+            <input name="metode" type="radio" value="kartu" />
+            <span>Kartu Kredit / Debit</span>
+          </label>
+        </p>
+        <div id="kartuSection" style="display:none;">
+          <div class="input-field">
+            <input id="nomorKartu" type="text" maxlength="16" placeholder="Nomor Kartu">
+            <label for="nomorKartu">Nomor Kartu</label>
+          </div>
+          <div class="input-field">
+            <input id="namaKartu" type="text" placeholder="Nama di Kartu">
+            <label for="namaKartu">Nama di Kartu</label>
+          </div>
+          <div class="input-field">
+            <input id="expKartu" type="text" placeholder="MM/YY">
+            <label for="expKartu">Masa Berlaku</label>
+          </div>
+          <div class="input-field">
+            <input id="cvvKartu" type="password" maxlength="4" placeholder="CVV">
+            <label for="cvvKartu">CVV</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol Bayar -->
+    <div class="center-align" style="margin-bottom:20px;">
+      <button id="btnBayarSekarang" class="btn green waves-effect waves-light">
+        Bayar Sekarang
+      </button>
+      <button id="btnDownloadStruk" class="btn orange waves-effect waves-light" style="display:none;">
+        Download Struk (PDF)
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+<footer class="page-footer white">
+  <div class="container black-text">
+    <div class="row">
+
+      <!-- Logo & Perusahaan -->
+      <div class="col s12 m4">
+        <img src="../assets/logo.png" alt="LifeStyle Asuransi" style="width:120px; margin-bottom:15px;">
+        <h6 class="black-text">PT. LifeStyle Asuransi</h6>
+        <p class="black-text text-lighten-4">Perlindungan lengkap untuk Mobil, Jiwa, dan Kesehatan.</p>
+      </div>
+
+      <!-- Kontak -->
+      <div class="col s12 m4">
+        <h6 class="black-text">Contact Us</h6>
+        <ul class="black-text text-lighten-3">
+          <li><i class="material-icons tiny">place</i> JL. Duri Raya No. 72L, Jakarta Barat</li>
+          <li><i class="material-icons tiny">call</i> (021) 1234 5678</li>
+          <li><i class="material-icons tiny">email</i> support@lifestyleasuransi.com</li>
+        </ul>
+      </div>
+
+      <!-- Partner Brand -->
+      <div class="col s12 m4 center-align">
+        <h6 class="black-text">Partner Kami</h6>
+        <div class="row" style="margin-top:10px;">
+          <div class="col s4">
+            <img src="../assets/partner/allianz.png" alt="Allianz" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/prudential.png" alt="Prudential" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/aia.png" alt="AIA" style="max-width:80px;">
+          </div>
+          <div class="col s4">
+            <img src="../assets/partner/astra.png" alt="Astra" style="max-width:80px;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright indigo darken-4">
+    <div class="container center-align">
+      © 2025 PT. LifeStyle Asuransi
+    </div>
+  </div>
+</footer>
+
+  <script src="./js/materialize.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    M.FormSelect.init(document.querySelectorAll('select'));
+
+    // Ambil data dari checkout
+    let bayarData = JSON.parse(localStorage.getItem("bayarData"));
+    if (!bayarData) {
+      alert("Data pembayaran tidak ditemukan!");
+      window.location.href = "checkout.html";
+      return;
+    }
+
+    // Normalisasi: kalau object tunggal, jadikan array
+    if (!Array.isArray(bayarData)) {
+      bayarData = [bayarData];
+    }
+
+    // Hitung total
+    let totalPremi = bayarData.reduce((acc, item) => acc + (item.premi || 0), 0);
+
+    // Tampilkan detail
+    if (bayarData.length === 1) {
+      let d = bayarData[0];
+      document.getElementById("jenisPolis").textContent = d.type || "-";
+      document.getElementById("produk").textContent = d.produk || "-";
+      document.getElementById("pemilik").textContent = d.pemilik || "-";
+      document.getElementById("tanggal").textContent = d.tanggal || "-";
+      document.getElementById("premi").textContent = d.premi.toLocaleString("id-ID");
+    } else {
+      document.getElementById("jenisPolis").textContent = "Multiple Polis";
+      document.getElementById("produk").textContent = "-";
+      document.getElementById("pemilik").textContent = "-";
+      document.getElementById("tanggal").textContent = "-";
+      document.getElementById("premi").textContent = totalPremi.toLocaleString("id-ID");
+
+      // tampilkan tabel
+      const tabel = document.getElementById("tabelPolis");
+      document.getElementById("tabelPolisContainer").style.display = "block";
+      tabel.innerHTML = "";
+      bayarData.forEach(item => {
+        let row = `
+          <tr>
+            <td>${item.pemilik}</td>
+            <td>${item.type}</td>
+            <td>${item.produk}</td>
+            <td>${item.tanggal}</td>
+            <td>Rp ${item.premi.toLocaleString("id-ID")}</td>
+          </tr>
+        `;
+        tabel.innerHTML += row;
+      });
+    }
+
+    // Generate VA otomatis
+    function generateVA(prefix) {
+      return prefix + Math.floor(100000000 + Math.random() * 900000000);
+    }
+    document.getElementById("vaBank").textContent = generateVA("0099");
+    document.getElementById("vaEwallet").textContent = generateVA("4428");
+
+    // Toggle section sesuai metode
+    document.querySelectorAll("input[name=metode]").forEach(el => {
+      el.addEventListener("change", function() {
+        document.getElementById("bankSection").style.display = this.value === "bank" ? "block" : "none";
+        document.getElementById("ewalletSection").style.display = this.value === "ewallet" ? "block" : "none";
+        document.getElementById("kartuSection").style.display = this.value === "kartu" ? "block" : "none";
+      });
+    });
+
+    // Download struk
+    document.getElementById("btnDownloadStruk").addEventListener("click", function() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.setFontSize(16);
+      doc.text("Struk Pembayaran Polis", 20, 20);
+
+      doc.setFontSize(12);
+      let y = 40;
+      bayarData.forEach(item => {
+        doc.text(`Jenis Polis   : ${item.kategori}`, 20, y); y += 10;
+        doc.text(`Produk       : ${item.produk}`, 20, y); y += 10;
+        doc.text(`Pemilik      : ${item.pemilik}`, 20, y); y += 10;
+        doc.text(`Tanggal      : ${item.tanggal}`, 20, y); y += 10;
+        doc.text(`Premi        : Rp ${item.premi.toLocaleString("id-ID")}`, 20, y); y += 15;
+      });
+
+      doc.text(`TOTAL BAYAR  : Rp ${totalPremi.toLocaleString("id-ID")}`, 20, y);
+
+      doc.save("Struk_Pembayaran.pdf");
+    });
+
+   // Bayar sekarang
+document.getElementById("btnBayarSekarang").addEventListener("click", function() {
+  let history = JSON.parse(localStorage.getItem("polisHistory")) || [];
+
+  bayarData.forEach(b => {
+    // Normalisasi field type
+    let tipePolis = b.type || b.kategori || "-";
+
+    let index = history.findIndex(item => item.id === b.id);
+    if (index !== -1) {
+      history[index].status = "Sudah Lunas";
+      history[index].type = tipePolis; // update kalau belum ada
+    } else {
+      history.push({
+        ...b,
+        type: tipePolis,       // selalu isi type, meskipun dari kategori
+        kategori: b.kategori,  // simpan juga kategori kalau ada
+        status: "Sudah Lunas"
+      });
+    }
+  });
+
+  localStorage.setItem("polisHistory", JSON.stringify(history));
+  localStorage.removeItem("bayarData");
+
+  M.toast({html: "Pembayaran berhasil! Semua polis sudah lunas.", classes: "green"});
+  setTimeout(() => {
+    window.location.href = "history.html";
+  }, 2000);
+});
+
+
+    
+  });
+  </script>
+</body>
+</html>
